@@ -119,7 +119,7 @@ planets = {
         }
 }
 
-#exclude sun from planet list 
+#exclude the sun from planet list 
 planet_items = [(name,data) for name, data in planets.items() if data ["distance"] != "Centre"]
 
 # sort planets by position
@@ -130,30 +130,58 @@ sorted_planets = sorted(
     key=lambda x: int(x[1]["position"])
 )
 
-# The menus structure was based on the exercises from week 4  
+#display planet in order function
+def display_sorted_planets (planet_list):
+   for name, data in planet_list:
+       print (name)
+
+# The menu structure was based on the exercises from week 4  
 # While working on those, I looked for help on stack overflow to understand how to handle user input and menu options
 # I used the following post for referenece and guidance: 
 # https://stackoverflow.com/questions/59138345/how-to-create-simple-menu-in-python-with-list-functions
+
 menu_value = ""
-while menu_value !="4":
-  menu_value = input (
-     "What would you like to do? " \
-     "1. List all planets. " \
-     "2. Description of a planet. " \
-     "3. Ask a question (free text search). " \
-     "4. Quit " \
-     "Enter value:"
-     )
-  if menu_value == "1":
-    sub_menu = ""
-    sub_menu = input ("Do you want to: " \
-    "1. Planets ordered closest to the Sun " \
-    "2. Planets ordered furthest from the Sun " \
-    "Enter a value:"
+
+while menu_value != "4":
+    menu_value = input(
+        "\nWhat would you like to do?\n"
+        "1. List all planets\n"
+        "2. Description of a planet\n"
+        "3. Ask a question (free text search)\n"
+        "4. Quit\n"
+        "Enter value: "
     )
-    if sub_menu =="1":
-        display_sorted_planets(sorted_planets)
-    elif sub_menu == "2":
-        display_sorted_planets(list(reversed(sorted_planets)))
 
+    # menu 1 functionality
+    if menu_value == "1":
+        sub_menu = input(
+            "\nDo you want to:\n"
+            "1. Planets ordered closest to the Sun\n"
+            "2. Planets ordered furthest from the Sun\n"
+            "Enter a value: "
+        )
+        if sub_menu == "1":
+            display_sorted_planets(sorted_planets)
+        elif sub_menu == "2":
+            display_sorted_planets(list(reversed(sorted_planets)))
 
+    # menu 2 functionality
+    elif menu_value == "2":
+        planet_name = input("Enter a planet name to display the description: ")
+        description = planets.get(planet_name,{} ).get("description")
+        if description:
+            print(f"\n{description}\n")
+        else: 
+            print ("\nNo data available for that planet.\n")
+
+    # menu 3 functionality
+    elif menu_value == "3":
+        print("Search functionality coming soon...")
+
+    # menu 4 functionality (Goodbye)
+    elif menu_value == "4":
+        print("Goodbye!")
+
+    # invalid input 
+    else:
+        print("Invalid value, please enter 1, 2, 3 or 4.")
