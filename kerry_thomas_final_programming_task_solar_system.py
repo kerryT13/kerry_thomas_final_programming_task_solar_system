@@ -168,15 +168,25 @@ while menu_value != "4":
     # menu 2 functionality
     elif menu_value == "2":
         planet_name = input("Enter a planet name to display the description: ")
-        description = planets.get(planet_name,{} ).get("description")
-        if description:
-            print(f"\n{description}\n")
+
+     # Case insensitive 
+     # During test i noted that 'earth' would work so i search stack overflow for help with coe to accept lower case.
+     # I found this discussion https://stackoverflow.com/questions/319426/how-do-i-do-a-case-insensitive-string-comparison
+     # and the discussion let me to useing casefold so that it would cover all combinations of upper and lower case.
+        match = None
+        for name in planets:
+            if name.casefold() == planet_name.casefold():
+                match = name
+                break
+
+        if match:
+            print(f"\n{planets[match]['description']}\n")
         else: 
             print ("\nNo data available for that planet.\n")
 
     # menu 3 functionality
     elif menu_value == "3":
-        print("Search functionality coming soon...")
+        print("Search functionality")
 
     # menu 4 functionality (Goodbye)
     elif menu_value == "4":
