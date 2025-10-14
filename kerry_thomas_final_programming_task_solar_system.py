@@ -56,7 +56,7 @@ planets = {
            "Earth is the third planet from the Sun and the only astronomical object known to harbor life."
            " This is enabled by Earth being an ocean world, the only one in the Solar System sustaining liquid surface water."
            " Almost all of Earth's water is contained in its global ocean, covering 70.8 percent of Earth's crust. "
-           "The remaining 29.2 percentof Earth's crust is land, most of which is located in the form of continental "
+           "The remaining 29.2 percent of Earth's crust is land, most of which is located in the form of continental "
            "landmasses within Earth's land hemisphere. Most of Earth's land is at least somewhat humid and covered by vegetation,"
            " while large ice sheets at Earth's polar deserts retain more water than Earth's groundwater, lakes, rivers, and atmospheric water combined."
         )
@@ -91,8 +91,11 @@ planets = {
         "distance": "1.43 billion km",
         "position": "6", 
         "moons": 274,
-        "description": "Saturn is the sixth planet from the Sun and the second largest in the Solar System, after Jupiter. It is a gas giant, with an average radius of about 9 times that of Earth. It has an eighth of the average density of Earth, but is over 95 times more massive. Even though Saturn is almost as big as Jupiter, Saturn has less than a third of its mass."
+        "description": "Saturn is the sixth planet from the Sun and the second largest in the Solar System, after Jupiter."
+        "It is a gas giant, with an average radius of about 9 times that of Earth. It has an eighth of the average density of Earth," 
+        "but is over 95 times more massive. Even though Saturn is almost as big as Jupiter, Saturn has less than a third of its mass."
         },
+
     "Uranus": {
          "mass": "8.68 x 10^25 kg",
         "distance": "2.87 billion km", 
@@ -106,6 +109,7 @@ planets = {
             "of all the Solar System's planets."
         )
         },
+
     "Neptune": {
          "mass": "1.02 x 10^26 kg",
         "distance": "4.50 billion km", 
@@ -122,7 +126,7 @@ planets = {
 #exclude the sun from planet list 
 planet_items = [(name,data) for name, data in planets.items() if data ["distance"] != "Centre"]
 
-# sort planets by position
+# Sort planets by position
 # I modified the code from the lesson in week 4 relating to nested lists.
 # I also used additional guidance from https://www.w3schools.com/python/python_lambda.asp
 sorted_planets = sorted(
@@ -130,7 +134,7 @@ sorted_planets = sorted(
     key=lambda x: int(x[1]["position"])
 )
 
-#display planet in order function
+# Display planet in order function
 def display_sorted_planets (planet_list):
    for name, data in planet_list:
        print (name)
@@ -152,7 +156,7 @@ while menu_value != "4":
         "Enter value: "
     )
 
-    # menu 1 functionality
+# Menu 1 functionality
     if menu_value == "1":
         sub_menu = input(
             "\nDo you want to:\n"
@@ -165,14 +169,15 @@ while menu_value != "4":
         elif sub_menu == "2":
             display_sorted_planets(list(reversed(sorted_planets)))
 
-    # menu 2 functionality
+# Menu 2 functionality
     elif menu_value == "2":
-        planet_name = input("Enter a planet name to display the description: ")
+        planet_name = input("Enter a planet name to display the description: ").strip()
 
-     # Case insensitive 
-     # During test i noted that 'earth' would work so i search stack overflow for help with coe to accept lower case.
-     # I found this discussion https://stackoverflow.com/questions/319426/how-do-i-do-a-case-insensitive-string-comparison
-     # and the discussion let me to useing casefold so that it would cover all combinations of upper and lower case.
+# Case insensitive 
+# During tests I noted that 'earth' would give me a 'No data available..' response but 'Earth' would give me the description
+# I searched stack overflow for help with code to accept lower case input.
+# I found the following discussion https://stackoverflow.com/questions/319426/how-do-i-do-a-case-insensitive-string-comparison
+# A commnet in the thread mentioned using casefold, so I included it so that it would cover all combinations of upper and lower case.
         match = None
         for name in planets:
             if name.casefold() == planet_name.casefold():
@@ -184,14 +189,60 @@ while menu_value != "4":
         else: 
             print ("\nNo data available for that planet.\n")
 
-    # menu 3 functionality
-    elif menu_value == "3":
-        print("Search functionality")
+# Menu 3 functionality
+# For this section, I used ideas from Stack Overflow to understand how to:
+#   - search strings for keywords https://stackoverflow.com/questions/3437059/does-python-have-a-string-contains-substring-method
+#   - how to use the max function using key and lambda https://stackoverflow.com/questions/18296755/python-max-function-using-key-and-lambda-expression
+# Additionally I used the casefold funtionality which i discovered during my development of menu 2 
 
-    # menu 4 functionality (Goodbye)
+
+
+    elif menu_value == "3":
+        question = input(
+            "\nAsk a question (examples):\n"
+            "'How many moons does Jupiter have?'\n"
+            "'What planet has the most moons?'\n"
+            "'How massive is Earth?'\n"
+            "'How far from the sun is Venus?'\n"
+            "Enter your question:"
+        ).casefold().strip()
+
+        if "moon" in question and "does" in question:
+            for name, data in planets.items():
+                if name.casefold() in question:
+                    print(f"{name} has {data['moons']} moons(s).")
+                    break
+            else:
+                print("I couldn't identify the planet in your question.")
+        
+        elif "moon" in question and "most" in question:
+             max_moons = max(planets.items(), key=lambda x: x[1]["moons"])
+             print(f"\nThe planet with the most moons is {max_moons[0]} ({max_moons[1]['moons']} moons).")
+
+        elif "mass" in question or "massive" in question:
+            for name, data in planets.items():
+                if name.casefold() in question:
+                    print (f"The mass of {name} is {data['mass']}.")
+                    break
+            else: 
+                print("I couldn't identify the planet in your question.")
+        
+        elif "far" in question or "distance" in question:
+            for name, data in planets.items():
+                if name.casefold() in question:
+                    print(f"{name}is {data['distance']} from the sun.")
+                    break
+            else: 
+                print("I couldn't identify the planet in your question.")
+
+        else:
+            print("Sorry, I couldn't understand that question."
+            "Try asking about moons, mass or distance.")
+
+# Menu 4 functionality (Goodbye)
     elif menu_value == "4":
         print("Goodbye!")
 
-    # invalid input 
+# Invalid input 
     else:
         print("Invalid value, please enter 1, 2, 3 or 4.")
