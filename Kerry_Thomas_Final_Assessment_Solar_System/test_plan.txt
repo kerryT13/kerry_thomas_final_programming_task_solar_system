@@ -1,0 +1,103 @@
+Program File: kerry_thomas_final_programming_task_solar_system.py  
+Version: Final Submission (18 Oct 2025)
+
+TEST PLAN - Kerry Thomas
+Program: Solar System 
+Date: 18 October 2025
+
+Purpose: 
+To confirm that all menu options and key program features perform correctly 
+and that invalid or unexpected inputs are handled appropriately.
+
+Test Environment:
+Python 3.12.2 running in Visual Studio Code
+
+
+Test ID | Description                            |Test Steps                                                     | Expected Result                                                                    |Actual Result              | Pass/Fail |
+--------|----------------------------------------|---------------------------------------------------------------|------------------------------------------------------------------------------------|---------------------------|-----------|
+TC01    | Program Start                          | Run Program                                                   | Menu displays with options 1-4                                                     | Menu Displayed correclty  | Pass      |
+TC02    | Menu Option 1- Planets nearest Sun     | Select option 1 , then sub - option 1                         | Planets listed from Mercury - Neptune                                              | Correct details displayed | Pass      |
+TC03    | Menu Option 1- Planets farthest Sun    | Select option 1 , then sub - option 2                         | Planets listed from Neptune - Mercury                                              | Correct details displayed | Pass      |
+TC04    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Pluto"          | Display "No, Pluto is not in the list of planets."                                 | Correct details displayed | Pass      |
+TC05    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Mercury"        | Display "Yes, Mercury is in the list of planets."                                  | Correct details displayed | Pass      |
+TC06    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Venus"          | Display "Yes, Venus is in the list of planets."                                    | Correct details displayed | Pass      |
+TC07    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Earth"          | Display "Yes, Earth is in the list of planets."                                    | Correct details displayed | Pass      |
+TC08    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Mars"           | Display "Yes, Mars is in the list of planets."                                     | Correct details displayed | Pass      |
+TC09    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Jupiter"        | Display "Yes, Jupiter is in the list of planets."                                  | Correct details displayed | Pass      |
+TC10    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Saturn"         | Display "Yes, Saturn is in the list of planets."                                   | Correct details displayed | Pass      |
+TC11    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Uranus"         | Display "Yes, Uranus is in the list of planets."                                   | Correct details displayed | Pass      |
+TC12    | Menu Option 1- Check planet on list    | Select option 1 , then sub - option 3, Enter "Neptune"        | Display "Yes, Neptune is in the list of planets."                                  | Correct details displayed | Pass      |
+TC13    | Menu Option 1- Check Case              | Select option 1 , then sub - option 3, Enter "earth"          | Display "Yes, Earth is in the list of planets."                                    | Correct details displayed | Pass      |
+TC14    | Menu Option 1- Check Case              | Select option 1 , then sub - option 3, Enter "EARTH"          | Display "Yes, Earth is in the list of planets."                                    | Correct details displayed | Pass      |
+TC15    | Menu Option 1- Check Case              | Select option 1 , then sub - option 3, Enter "EaRtH"          | Display "Yes, Earth is in the list of planets."                                    | Correct details displayed | Pass      |
+TC16    | Menu option 1 – return to main menu    | Select option 1, then sub-option 4                            | Return to main menu                                                                | Returns to main menu      | Pass      |
+TC17    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Sun”                                  | Shows Sun's full details                                                           | Correct details displayed | Pass      |
+TC18    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Mercury”                              | Shows Mercury's full details                                                       | Correct details displayed | Pass      |
+TC19    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Venus”                                | Shows Venus's full details                                                         | Correct details displayed | Pass      |
+TC20    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Earth”                                | Shows Earth's full details                                                         | Correct details displayed | Pass      |
+TC21    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Mars”                                 | Shows Mars's full details                                                          | Correct details displayed | Pass      |
+TC22    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Jupiter”                              | Shows Jupiter's full details                                                       | Correct details displayed | Pass      |
+TC23    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Saturn”                               | Shows Saturn's full details                                                        | Correct details displayed | Pass      |
+TC24    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Uranus”                               | Shows Uranus's full details                                                        | Correct details displayed | Pass      |
+TC25    | Menu option 2 - Valid Planet Details   | Select option 2, enter “Neptune”                              | Shows Neptune's full details                                                       | Correct details displayed | Pass      |
+TC26    | Menu option 2 - Invalid Planet Details | Select option 2, enter “Pluto”                                | Message: “No data available for that planet.”                                      | Correct message displayed | Pass      |
+TC27    | Menu Option 2 - details check case     | Select option 2 , then sub - option 3, Enter "earth"          | Shows Earth's full details                                                         | Correct details displayed | Pass      |
+TC28    | Menu Option 2 - details check case     | Select option 2, then sub - option 3, Enter "EARTH"           | Shows Earth's full details                                                         | Correct details displayed | Pass      |
+TC29    | Menu Option 1 - details check case     | Select option 2, then sub - option 3, Enter "EaRtH"           | Shows Earth's full details                                                         | Correct details displayed | Pass      |
+TC30    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Sun have?"          | Displays "Sorry, I couldn't undertand that question.                               | Correct answer shown      | Pass      |
+        |                                        |                                                               | Try asking about moons,mass or distance."                                          |                           |           |
+TC31    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Mercury have?"      | Displays "Mercury has no moons."                                                   | Correct answer shown      | Pass      |
+TC32    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Venus have?"        | Displays "Venus has no moons."                                                     | Correct answer shown      | Pass      |
+TC33    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Earth have?"        | Displays "Earth has 1 moon(s)."                                                    | Correct answer shown      | Pass      |
+TC34    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Mars have?"         | Displays "Mars has 2 moon(s)."                                                     | Correct answer shown      | Pass      |
+TC35    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Jupiter have?"      | Displays "Jupiter has 79 moon(s)."                                                 | Correct answer shown      | Pass      |
+TC36    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Saturn have?"       | Displays "Saturn has 274 moon(s)."                                                 | Correct answer shown      | Pass      |
+TC37    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Uranus have?"       | Displays "Uranus has 28 moon(s)."                                                  | Correct answer shown      | Pass      |
+TC38    | Menu option 3 - moons question         | Select option 3, Ask “How many moons does Neptune have?"      | Displays "Neptune has 16 moon(s)."                                                 | Correct answer shown      | Pass      |
+TC39    | Menu Option 3 - moons check case       | Select option 3, Ask “How many moons does earth have?"        | Displays "Earth has 1 moon(s)."                                                    | Correct details displayed | Pass      |
+TC40    | Menu Option 3 - moons check case       | Select option 3, Ask “How many moons does EARTH have?"        | Displays "Earth has 1 moon(s)."                                                    | Correct details displayed | Pass      |
+TC41    | Menu Option 3 - moons check case       | Select option 3, Ask “How many moons does EaRtH have?"        | Displays "Earth has 1 moon(s)."                                                    | Correct details displayed | Pass      |
+TC42    | Menu option 3 - mass question          | Select option 3, Ask “How massive is Mercury?"                | Displays "The mass of Mercury is 3.30 x 10^23 kg."                                 | Correct answer shown      | Pass      |
+TC43    | Menu option 3 - mass question          | Select option 3, Ask “How massive is the Sun?"                | Displays "The mass of Sun is 1.989 x 10^30 kg."                                    | Correct answer shown      | Pass      |
+TC44    | Menu option 3 - mass question          | Select option 3, Ask “How massive is Venus?"                  | Displays "The mass of Venus is 4.87 x 10^24 kg."                                   | Correct answer shown      | Pass      |
+TC45    | Menu option 3 - mass question          | Select option 3, Ask “Give me the mass of Mars"               | Displays "The mass of Mars is 6.42 x 10^23 kg."                                    | Correct answer shown      | Pass      |
+TC46    | Menu option 3 - mass question          | Select option 3, Ask “What is Jupiters mass?"                 | Displays "The mass of Jupiter is 1.90 x 10^27 kg"                                  | Correct answer shown      | Pass      |
+TC47    | Menu option 3 - mass question          | Select option 3, Ask “Give me Saturns Mass"                   | Displays "The mass of Saturn is 5.68 x 10^26 kg."                                  | Correct answer shown      | Pass      |
+TC48    | Menu option 3 - mass question          | Select option 3, Ask “what is the mass of Uranus?"            | Displays "The mass of Uranus is 8.68 x 10^25 kg."                                  | Correct answer shown      | Pass      |
+TC49    | Menu option 3 - mass question          | Select option 3, Ask “How massive is Neptune?"                | Displays "The mass of Neptune is 1.02 x 10^26 kg."                                 | Correct answer shown      | Pass      |
+TC50    | Menu Option 3 - mass check case        | Select option 3, Ask “How massive is venus?"                  | Displays "The mass of Venus is 4.87 x 10^24 kg."                                   | Correct answer shown      | Pass      |
+TC51    | Menu Option 3 - mass check case        | Select option 3, Ask “How massive is VENUS?"                  | Displays "The mass of Venus is 4.87 x 10^24 kg."                                   | Correct answer shown      | Pass      |
+TC52    | Menu Option 3 - mass check case        | Select option 3, Ask “How massive is VeNuS?"                  | Displays "The mass of Venus is 4.87 x 10^24 kg."                                   | Correct answer shown      | Pass      |
+TC53    | Menu option 3 - most moons             | Select option 3, Ask “What planet has the most moons?"        | Displays "The planet with the most moons is Saturn (274 moons)."                   | Correct output            | Pass      |
+TC54    | Menu option 3 - distance               | Select option 3, Ask “How far from the sun is Mercury?"       | Displays "Mercury is 57.9 million km from the Sun."                                | Correct output            | Pass      |
+TC55    | Menu option 3 - distance               | Select option 3, Ask “What distance from the sun is Venus?"   | Displays "Venus is 108.2 million km from the Sun."                                 | Correct output            | Pass      |
+TC56    | Menu option 3 - distance               | Select option 3, Ask “How far from the sun is Earth?"         | Displays "Earth is 149.6 million km from the Sun.."                                | Correct output            | Pass      |
+TC57    | Menu option 3 - distance               | Select option 3, Ask “What distance from the sun  Mars?"      | Displays "Mars is 227.9 million km from the Sun."                                  | Correct output            | Pass      |
+TC58    | Menu option 3 - distance               | Select option 3, Ask “How far from the sun is Jupiter?"       | Displays "Jupiter is 778.3 million km from the Sun."                               | Correct output            | Pass      |
+TC59    | Menu option 3 - distance               | Select option 3, Ask “How far from the sun is Saturn?"        | Displays "Saturn is 1.43 billion km from the Sun."                                 | Correct output            | Pass      |
+TC60    | Menu option 3 - distance               | Select option 3, Ask “How far from the sun is Uranus?"        | Displays "Uranus is 2.87 billion km from the Sun."                                 | Correct output            | Pass      |
+TC61    | Menu option 3 - distance               | Select option 3, Ask “How far from the sun is Neptune?"       | Displays "Neptune is 4.50 billion km from the Sun."                                | Correct output            | Pass      |
+TC62    | Menu Option 3 - distance check case    | Select option 3, Ask “How far from the sun is saturn?"        | Displays "Saturn is 1.43 billion km from the Sun."                                 | Correct output            | Pass      |
+TC63    | Menu Option 3 - distance check case    | Select option 3, Ask “How far from the sun is SATURN?"        | Displays "Saturn is 1.43 billion km from the Sun."                                 | Correct output            | Pass      |
+TC64    | Menu Option 3 - distance check case    | Select option 3, Ask “How far from the sun is SaTuRn?"        | Displays "Saturn is 1.43 billion km from the Sun."                                 | Correct output            | Pass      |
+TC65    | Menu option 3 - Moon Names             | Select option 3, Ask “What are the moons of Mercury?"         | Displays "Mercury has no moons listed."                                            | Correct output            | Pass      |
+TC66    | Menu option 3 - Moon Names             | Select option 3, Ask “What are the moons of Venus?"           | Displays "Venus has no moons listed."                                              | Correct output            | Pass      |
+TC67    | Menu option 3 - Moon Names             | Select option 3, Ask “The Earths moons are called?"           | Displays "The names of Earth's main moons are The Moon."                           | Correct output            | Pass      |
+TC68    | Menu option 3 - Moon Names             | Select option 3, Ask “What are Mars moons names?"             | Displays " he names of Mars's main moons are Phobos, Deimos."                      | Correct output            | Pass      |
+TC69    | Menu option 3 - Moon Names             | Select option 3, Ask “What are the moons of Jupiter?"         | Displays "The names of Jupiter's main moons are Io, Europa, Ganymede, Callisto.."  | Correct output            | Pass      |
+TC70    | Menu option 3 - Moon Names             | Select option 3, Ask “Give me the moon name for Saturn"       | Displays "The names of Saturn's main moons are Titan, Rhea, Enceladus, Dione."     | Correct output            | Pass      |
+TC71    | Menu option 3 - Moon Names             | Select option 3, Ask “What are the moon names of Uranus?"     | Displays "The names of Uranus's main moons are Titania, Oberon, Umbriel, Ariel."   | Correct output            | Pass      |
+TC72    | Menu option 3 - Moon Names             | Select option 3, Ask “Name the moons of Neptune"              | Displays "The names of Neptune's main moons are Triton, Proteus."                  | Correct output            | Pass      |
+TC73    | Menu option 3 - Moon Names check case  | Select option 3, Ask “What are mars moons names?"             | Displays "The names of Mars's main moons are Phobos, Deimos."                      | Correct output            | Pass      |
+TC74    | Menu option 3 - Moon Names check case  | Select option 3, Ask “What are MARS moons names?"             | Displays "The names of Mars's main moons are Phobos, Deimos."                      | Correct output            | Pass      |
+TC75    | Menu option 3 - Moon Names check case  | Select option 3, Ask “What are MaRs moons names?"             | Displays " he names of Mars's main moons are Phobos, Deimos."                      | Correct output            | Pass      |
+TC76    | Invalid menu input                     | Enter an invalid number (e.g.7)                               | Displays "Invalid value, please enter 1, 2, 3 or 4."                               | Correct output            | Pass      |
+TC77    | Quit Option                            | Enter 4 at main menu                                          | Displays "Goodbye!" and exits                                                      | Works correctly           | Pass      |
+TC78    | Menu option 3 – random text            | Select option 3, Ask "Tell me about cheese"                   | Displays “Sorry, I couldn’t understand that question.” |                             Correct output            | Pass      |
+--------|----------------------------------------|---------------------------------------------------------------|------------------------------------------------------------------------------------|---------------------------|-----------|
+
+
+Summary:
+All 77 test cases passed successfully.
+The system performed as expected in all scenarios tested.
+No defects remain outstanding.
