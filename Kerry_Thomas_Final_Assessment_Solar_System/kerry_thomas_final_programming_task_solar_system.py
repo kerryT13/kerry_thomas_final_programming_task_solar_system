@@ -1,4 +1,4 @@
-# Planet data was taken from wikipedia. 
+
 
 class Moon:
     def __init__(self, name):
@@ -20,7 +20,7 @@ class Planet:
     def summary (self):
         names_text=(", ".join(str(m) for m in self.moons)) if self.moons else "None listed"
         count = self.moon_count if self.moon_count is not None else len(self.moons)
-        moons_text = f"{count} moon(s) - examples: {names_text}"
+        moons_text = f"{count} moon(s) - Main moon names are: {names_text}"
     
         return ( 
             f"\n{self.name}\n"
@@ -31,7 +31,7 @@ class Planet:
             f"Description: {self.description}\n"
         )
 
-
+# Planet data was taken from wikipedia. 
 planets = {
 
     "Sun": Planet(
@@ -158,7 +158,7 @@ planets = {
         mass="1.02 x 10^26 kg",
         distance="4.50 billion km", 
         position=8, 
-        moon_names=["Triton", "Proteus"], #only listed main moons 
+        moon_names=["Triton", "Proteus"], #only listed main moon names 
         moon_count = 16,
         description=(
             "Neptune is the eighth and farthest known planet orbiting the Sun. "
@@ -184,65 +184,66 @@ def display_sorted_planets (planet_list):
 # I used the following post for referenece and guidance: 
 # https://stackoverflow.com/questions/59138345/how-to-create-simple-menu-in-python-with-list-functions
 
-menu_value = ""
+def main ():
+    menu_value = ""
 
-while menu_value != "4":
-    menu_value = input(
-        "\nWhat would you like to do?\n"
-        "1. List all planets\n"
-        "2. Tell me everything about a planet\n"
-        "3. Ask a question (free text search)\n"
-        "4. Quit\n"
-        "Enter value: "
-    )
+    while menu_value != "4":
+        menu_value = input(
+            "\nWhat would you like to do?\n"
+            "1. List all planets\n"
+            "2. Tell me everything about a planet\n"
+            "3. Ask a question (free text search)\n"
+            "4. Quit\n"
+            "Enter value: "
+        )
 
 # Menu 1 functionality
-    if menu_value == "1":
-        sub_menu = input(
-            "\nDo you want to:\n"
-            "1. Planets ordered closest to the Sun\n"
-            "2. Planets ordered furthest from the Sun\n"
-            "3. Check if a planet is on the list\n"
-            "4. Return to Main Menu\n"
-            "Enter a value: "
-        )
-        if sub_menu == "1":
-            display_sorted_planets(sorted_planets)
+        if menu_value == "1":
+            sub_menu = input(
+                "\nDo you want to:\n"
+                "1. Planets ordered closest to the Sun\n"
+                "2. Planets ordered furthest from the Sun\n"
+                "3. Check if a planet is on the list\n"
+                "4. Return to Main Menu\n"
+                "Enter a value: "
+            )
+            if sub_menu == "1":
+                display_sorted_planets(sorted_planets)
 
-        elif sub_menu == "2":
-            display_sorted_planets(list(reversed(sorted_planets)))
+            elif sub_menu == "2":
+                display_sorted_planets(list(reversed(sorted_planets)))
 
-        elif sub_menu == "3":
-            planet_check = input("\nEnter the name of a planet to check: ").casefold().strip()
-            if planet_check in [name.casefold() for name in planets.keys()]:
-                print(f"\nYes, {planet_check.capitalize()} is in the list of planets.\n")
-            else:
-                print(f"\nNo, {planet_check.capitalize()} is not in the list of planets.\n")
-        elif sub_menu == "4":
-            print("\nReturning to main menu.\n")
+            elif sub_menu == "3":
+                planet_check = input("\nEnter the name of a planet to check: ").casefold().strip()
+                if planet_check in [name.casefold() for name in planets.keys()]:
+                    print(f"\nYes, {planet_check.capitalize()} is in the list of planets.\n")
+                else:
+                    print(f"\nNo, {planet_check.capitalize()} is not in the list of planets.\n")
+            elif sub_menu == "4":
+                print("\nReturning to main menu.\n")
         
-        else:
-            print("\nInvalid value, please enter 1, 2, 3 or 4.\n")
+            else:
+                print("\nInvalid value, please enter 1, 2, 3 or 4.\n")
 
 # Menu 2 functionality
-    elif menu_value == "2":
-        planet_name = input("Enter a planet name: ").casefold().strip()
+        elif menu_value == "2":
+            planet_name = input("Enter a planet name: ").casefold().strip()
 
 # Case insensitive 
 # During tests I noted that 'earth' would give me a 'No data available..' response but 'Earth' would give me the description
 # I searched stack overflow for help with code to accept lower case input.
 # I found the following discussion https://stackoverflow.com/questions/319426/how-do-i-do-a-case-insensitive-string-comparison
 # A comment in the thread mentioned using casefold, so I included it so that it would cover all combinations of upper and lower case.
-        match = None
-        for name, planet in planets.items():
-            if name.casefold() == planet_name:
-                match = planet
-                break
+            match = None
+            for name, planet in planets.items():
+                if name.casefold() == planet_name:
+                    match = planet
+                    break
 
-        if match:
-            print(match.summary())
-        else: 
-            print ("\nNo data available for that planet.\n")
+            if match:
+                print(match.summary())
+            else: 
+                print ("\nNo data available for that planet.\n")
 
 # Menu 3 functionality
 # For this section, I used ideas from Stack Overflow to understand how to:
@@ -251,76 +252,90 @@ while menu_value != "4":
 # Additionally I used the casefold funtionality which I discovered during my development of menu 2 
 
 
-    elif menu_value == "3":
-        question = input(
-            "\nAsk a question (examples):\n"
-            "'How many moons does Jupiter have?'\n"
-            "'What planet has the most moons?'\n"
-            "'How massive is Earth?'\n"
-            "'How far from the sun is Venus?'\n"
-            "Enter your question:"
-        ).casefold().strip()
+        elif menu_value == "3":
+            question = input(
+                "\nAsk a question (examples):\n"
+                "'How many moons does Jupiter have?'\n"
+                "'What planet has the most moons?'\n"
+                "'How massive is Earth?'\n"
+                "'How far from the sun is Venus?'\n"
+                "Enter your question:"
+            ).casefold().strip()
 
-        if "moon" in question and "does" in question:
-            found = False
-            for planet in planets.values():
-                if planet.name.casefold() in question:
-                    found = True
-                    if planet.moon_count == 0:
-                        print(f"\n{planet.name} has no moons.\n")
-                    else:
-                        print (f"\n{planet.name} has {planet.moon_count} moon(s).\n")
-                    break
-            if not found:
-                print("\nI couldn't identify the planet in your question.\n")
-        
-        elif "moon" in question and "most" in question:
-             max_moons = max(planets.values(), key=lambda p: p.moon_count)
-             print(f"\nThe planet with the most moons is {max_moons.name} ({max_moons.moon_count} moons).\n")
+# Number of moons for a planet 
+            if "moon" in question and "does" in question:
+                found = False
+                for planet in planets.values():
+                    if planet.name.casefold() in question:
+                        found = True
+                        if planet.moon_count == 0:
+                            print(f"\n{planet.name} has no moons.\n")
+                        else:
+                            print(f"\n{planet.name} has {planet.moon_count} moon(s).\n")
+                        break
+                if not found:
+                    print("\nI couldn't identify the planet in your question.\n")
 
-        elif "mass" in question or "massive" in question:
-            for planet in planets.values():
-                if planet.name.casefold() in question:
-                    print (f"\nThe mass of {planet.name} is {planet.mass}.\n")
-                    break
-            else: 
-                print("\nI couldn't identify the planet in your question.\n")
-        
-        elif "far" in question or "distance" in question:
-            for planet in planets.values():
-                if planet.name.casefold() in question and planet.name.casefold() != "sun":
-                    print(f"\n{planet.name} is {planet.distance} from the Sun.\n")
-                    break
-            else: 
-                if "sun" in question:
-                    print("\nThe Sun is the centre of the Solar System.\n")
+# Planet with most moons 
+            elif "moon" in question and "most" in question:
+                max_moons = max(planets.values(), key=lambda p: p.moon_count)
+                print(f"\nThe planet with the most moons is {max_moons.name} ({max_moons.moon_count} moons).\n")
+
+# Moon names for a planet 
+            elif "moon" in question and "name" in question:
+                found = False 
+                for planet in planets.values():
+                    if planet.name.casefold() in question: 
+                        found = True 
+                        if not planet.moons: 
+                            print (f"\n{planet.name} has no moons.\n")
+                        else: 
+                            moon_names = ", ".join([moon.name for moon in planet.moons])
+                            print (f"\nThe names of {planet.name}'s main moons are {moon_names}.\n")
+                        break
+                if not found:
+                    print("\nI couldn't identify the planet in your question.\n")
+                
+# Mass of planet 
+            elif "mass" in question or "massive" in question:
+                for planet in planets.values():
+                    if planet.name.casefold() in question:
+                        print(f"\nThe mass of {planet.name} is {planet.mass}.\n")
+                        break
                 else:
                     print("\nI couldn't identify the planet in your question.\n")
 
-        elif "moon" in question:
-            for planet in planets.values():
-                if planet.name.casefold() in question:
-                    if planet.moon_count == 0:
-                        print(f"\n{planet.name} has no moons listed.\n")
+# Distance of planet from sun 
+            elif "far" in question or "distance" in question:
+                for planet in planets.values():
+                    if planet.name.casefold() in question and planet.name.casefold() != "sun":
+                        print(f"\n{planet.name} is {planet.distance} from the Sun.\n")
+                        break
+                else:
+                    if "sun" in question:
+                        print("\nThe Sun is the centre of the Solar System.\n")
                     else:
-                        moon_list = ", ".join(str(m) for m in planet.moons)
-                        print(f"\n The names of {planet.name}'s main moons are {moon_list}.\n")
-                    break
-            else:
-                print ("\nSorry, I couldn't understand that question. Try asking about moons, mass, or distance.\n")
-        else:
-            print("\nSorry, I couldn't understand that question. Try asking about moons, mass or distance.\n")
+                        print("\nI couldn't identify the planet in your question.\n")
+
+# Unregognised question
+            else: 
+                print("\nSorry, I couldn't understand that question.\n"
+                      "Try asking about moons, mass, or distance.\n")
 
 # Menu 4 functionality (Goodbye)
-    elif menu_value == "4":
-        print("\nGoodbye!\n")
+        elif menu_value == "4":
+            print("\nGoodbye!\n")
 
 # Invalid input 
-    else:
-        print("\nInvalid value, please enter 1, 2, 3 or 4.\n")
+        else:
+            print("\nInvalid value, please enter 1, 2, 3 or 4.\n")
+
+
+if  __name__ == "__main__":
+    main ()
 
 #-------------------------------------------------------------------------------------------
-# Refection and Development Notes 
+# Reflection and Development Notes 
 #-------------------------------------------------------------------------------------------
 # When I first started this project, I built the solar system data using nested dictionaries 
 # to hold each planet’s details. My main focus at that point was just to get the data structure 
@@ -328,7 +343,7 @@ while menu_value != "4":
 
 # I didn’t actually get access to my course until the third week, so even though I worked hard 
 # to catch up, I was still slightly behind when I began the assessment. At that stage, I hadn’t 
-# yet started Week 5 of the Codio lessons, which is where Object-Oriented Programming is introduced. 
+# yet started Week 5 of the Codio lessons, which is where Object Oriented Programming is introduced. 
 # Once I reached that section and checked the assessment criteria, I realised that I needed to use 
 # classes throughout the program. I then completely reworked my code so that each planet became an 
 # object of a Planet class rather than just being part of a dictionary.  
@@ -346,16 +361,20 @@ while menu_value != "4":
 # Through this project I also learned about handling case insensitive input using casefold(), sorting 
 # planets with lambda functions, and checking for keywords in user questions using string search logic. 
 # I found useful examples and explanations on Stack Overflow, W3Schools, and the SitePoint article on nested 
-# dictionaries, all of which are referenced in the differnt versions of my code. 
+# dictionaries, all of which are referenced in the different versions of my code on. 
 
-# My GitHub history shows the different stages of this project as I made improvements and tested each change.  
+# My GitHub history shows the different stages of this project as I made improvements and tested each change.
+
+# The brief mentioned that I could use a unit testing framework or Tkinter, but I decided to keep my test plan
+# text based and focused on meeting the main functional requirements. As I completed this assessment before 
+# finishing the final week’s lessons which cover testing due to not being able to catch up, I relied on my real
+# world experience of writing and executing test plans instead. Adding those extra features would have meant a
+# restructure, so I felt it was better to focus on ensuring the program worked correctly and was thoroughly
+# tested through my own plan.
+
 
 
 # -------------------------------------------------------------------------------------------
 # AI USE STATEMENT
 # -------------------------------------------------------------------------------------------
-# I used AI tools (ChatGPT) during the early stages of this project to help me understand Python concepts,
-# object-oriented design, and potential ways to structure the program. I used these tools to clarify ideas
-# and check my understanding of syntax, but all program design decisions, coding, and debugging were
-# completed independently.
 
