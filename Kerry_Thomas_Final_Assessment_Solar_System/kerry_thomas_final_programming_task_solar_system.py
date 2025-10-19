@@ -377,4 +377,7 @@ if  __name__ == "__main__":
 # -------------------------------------------------------------------------------------------
 # AI USE STATEMENT
 # -------------------------------------------------------------------------------------------
-
+# I used AI tools (ChatGPT) during the early stages of this project to help me understand Python concepts,
+# object-oriented design, and potential ways to structure the program. I used these tools to clarify ideas
+# and check my understanding of syntax, but all program design decisions, coding, and debugging were
+# completed independently.
