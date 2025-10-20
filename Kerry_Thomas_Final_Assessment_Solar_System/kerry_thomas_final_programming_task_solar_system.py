@@ -1,4 +1,6 @@
-
+# Kerry Thomas
+# Final Programming Task – Solar System (20 Oct 2025)
+# GitHub Repository: https://github.com/kerryT13/kerry_thomas_final_programming_task_solar_system
 
 class Moon:
     def __init__(self, name):
