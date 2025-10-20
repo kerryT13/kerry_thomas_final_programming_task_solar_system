@@ -1,9 +1,10 @@
 Program File: kerry_thomas_final_programming_task_solar_system.py  
-Version: Final Submission (18 Oct 2025)
+Version: Final Submission (20 Oct 2025)
+GitHub Repository: https://github.com/kerryT13/kerry_thomas_final_programming_task_solar_system
 
 TEST PLAN - Kerry Thomas
 Program: Solar System 
-Date: 18 October 2025
+Date: 20 October 2025
 
 Purpose: 
 To confirm that all menu options and key program features perform correctly 
